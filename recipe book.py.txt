@@ -1,0 +1,120 @@
+class Recipe:
+    def __init__(self, name, ingredients, instructions):
+        self.name = name
+        self.ingredients = ingredients
+        self.instructions = instructions
+
+    def display_recipe(self):
+        print(f"\nRecipe: {self.name}")
+        print("\nIngredients:")
+        for ingredient in self.ingredients:
+            print(f"- {ingredient}")
+        print("\nInstructions:")
+        for step, instruction in enumerate(self.instructions, start=1):
+            print(f"{step}. {instruction}")
+
+class RecipeBook:
+    def __init__(self):
+        self.recipes = []
+
+    def add_recipe(self, recipe):
+        self.recipes.append(recipe)
+
+    def display_recipes(self):
+        print("\nAvailable Recipes:")
+        for i, recipe in enumerate(self.recipes, start=1):
+            print(f"{i}. {recipe.name}")
+
+def main():
+    print("Welcome to the Recipe Book!")
+    user_name = input("Enter your name: ")
+
+    # Creating recipe objects
+    pasta_ingredients = ["Pasta", "Tomato Sauce", "Cheese", "Salt", "Pepper"]
+    pasta_instructions = ["Boil pasta", "Heat tomato sauce", "Mix pasta with sauce", "Add cheese", "Season with salt and pepper"]
+    pasta_recipe = Recipe("Pasta", pasta_ingredients, pasta_instructions)
+
+    salad_ingredients = ["Lettuce", "Tomatoes", "Cucumber", "Olive Oil", "Salt", "Lemon"]
+    salad_instructions = ["Chop vegetables", "Mix in a bowl", "Drizzle with olive oil", "Squeeze lemon", "Season with salt"]
+    salad_recipe = Recipe("Salad", salad_ingredients, salad_instructions)
+
+    # Creating recipe book and adding recipes
+    recipe_book = RecipeBook()
+    recipe_book.add_recipe(pasta_recipe)
+    recipe_book.add_recipe(salad_recipe)
+
+    # Displaying available recipes
+    recipe_book.display_recipes()
+
+    # User selects a recipe
+    recipe_choice = int(input("\nEnter the number of the recipe you want to view: "))
+    if 1 <= recipe_choice <= len(recipe_book.recipes):
+        selected_recipe = recipe_book.recipes[recipe_choice - 1]
+        print(f"\nHello {user_name}! Here's the recipe you chose:")
+        selected_recipe.display_recipe()
+    else:
+        print("Invalid recipe choice. Please enter a valid number.")
+
+if __name__ == "__main__":
+    main()
+/////////////////////////////////////////////////////////////
+class Recipe:
+    def __init__(self, name, ingredients, instructions, prep_time):
+        self.name = name
+        self.ingredients = ingredients
+        self.instructions = instructions
+        self.prep_time = prep_time
+
+    def display_recipe(self):
+        print(f"\nRecipe: {self.name}")
+        print(f"Preparation Time: {self.prep_time} minutes")
+        print("\nIngredients:")
+        for ingredient in self.ingredients:
+            print(f"- {ingredient}")
+        print("\nInstructions:")
+        for step, instruction in enumerate(self.instructions, start=1):
+            print(f"{step}. {instruction}")
+
+class RecipeBook:
+    def __init__(self):
+        self.recipes = []
+
+    def add_recipe(self, recipe):
+        self.recipes.append(recipe)
+
+    def display_recipes(self):
+        print("\nAvailable Recipes:")
+        for i, recipe in enumerate(self.recipes, start=1):
+            print(f"{i}. {recipe.name}")
+
+def main():
+    print("Welcome to the Recipe Book!")
+    user_name = input("Enter your name: ")
+
+    # Creating recipe objects
+    recipes = [
+        Recipe("Posho", ["Maize Flour", "Water", "Salt"], ["Boil water", "Add maize flour", "Stir until thickened"], 30),
+        Recipe("Matoke Stew", ["Matoke (Green Bananas)", "Onions", "Tomatoes", "Pepper", "Salt"], ["Peel matoke", "Cook with onions, tomatoes, and pepper", "Season with salt"], 45),
+        # Add more recipes from Uganda here...
+    ]
+
+    # Creating recipe book and adding recipes
+    recipe_book = RecipeBook()
+    for recipe in recipes:
+        recipe_book.add_recipe(recipe)
+
+    # Displaying available recipes
+    recipe_book.display_recipes()
+
+    # User selects a recipe
+    recipe_choice = int(input("\nEnter the number of the recipe you want to view: "))
+    if 1 <= recipe_choice <= len(recipe_book.recipes):
+        selected_recipe = recipe_book.recipes[recipe_choice - 1]
+        print(f"\nHello {user_name}! Here's the recipe you chose:")
+        selected_recipe.display_recipe()
+    else:
+        print("Invalid recipe choice. Please enter a valid number.")
+
+if __name__ == "__main__":
+    main()
+
